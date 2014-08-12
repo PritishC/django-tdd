@@ -8,6 +8,7 @@ Created on Tue Aug 12 12:38:42 2014
 from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 from lists.views import home_page
+from django.template.loader import render_to_string
 import pytest
 
 # resolve internally resolves URLs (hooking a view function to deal with the
