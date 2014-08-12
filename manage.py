@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/home/pritishc/Envs/django/bin/python
 import os
 import sys
 
