@@ -38,7 +38,7 @@ def browser(driver_init):
     
     return b
 
-@pytest.mark.xfail(reason="To-Do not in title yet")
+#@pytest.mark.xfail(reason="To-Do not in title yet")
 def test_start_list_retrieve_later(browser):
     # Obtain missile command from Firefox silos
     browser.get('http://localhost:8000')
