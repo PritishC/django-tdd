@@ -6,10 +6,11 @@ Created on Tue Aug 12 10:47:08 2014
 """
 
 from selenium import webdriver
+import os
 import pytest
 
 # This dict is used in the fixture that follows.
-browsers = {'firefox': webdriver.Firefox, 'chrome': webdriver.Chrome}
+browsers = {'firefox': webdriver.Firefox}
 
 # Session scope fixture.
 @pytest.fixture(scope='session', params=browsers.keys())
