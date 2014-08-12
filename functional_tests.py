@@ -39,7 +39,7 @@ def browser(driver_init):
     
     return b
 
-@pytest.mark.xfail(reason="Need to add the requisite features")
+#@pytest.mark.xfail(reason="Need to add the requisite features")
 def test_start_list_retrieve_later(browser):
     """
     This test does some stuff in the browser. We use some methods provided by

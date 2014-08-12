@@ -29,4 +29,4 @@ def test_home_page_return_correct_html():
     response = home_page(request)
     assert response.content.startswith(b'<html>')
     assert '<title>To-Do lists</title>' in response.content
-    assert response.content.endswith(b'</html>')
+    assert response.content.strip().endswith(b'</html>')
