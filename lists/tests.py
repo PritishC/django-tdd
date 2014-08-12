@@ -28,5 +28,7 @@ def test_home_page_return_correct_html():
     request = HttpRequest()
     response = home_page(request)
     assert response.content.startswith(b'<html>')
-    assert '<title>To-Do lists</title>' in response.content
-    assert response.content.strip().endswith(b'</html>')
+    #assert '<title>To-Do lists</title>' in response.content
+    #assert response.content.strip().endswith(b'</html>')
+    expected_html = render_to_string('home.html')
+    assert response.content.decode() == expected_html
