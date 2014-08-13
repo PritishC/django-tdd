@@ -56,7 +56,7 @@ def test_start_list_retrieve_later(browser):
     header_text = browser.find_element_by_tag_name('h1').text
     assert 'To-Do' in header_text
     
-    inputbox = broswer.find_element_by_id('id_new_item')
+    inputbox = browser.find_element_by_id('id_new_item')
     assert inputbox.get_attribute('placeholder') == 'Enter a to-do item'
     
     inputbox.send_keys('Buy peacock feathers')
