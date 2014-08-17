@@ -9,6 +9,7 @@ from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 from lists.views import home_page
 from django.template.loader import render_to_string
+from lists.models import Item
 import pytest
 
 # resolve internally resolves URLs (hooking a view function to deal with the
@@ -45,3 +46,21 @@ def test_home_page_saves_POST_request():
     # render_to_string takes a dict as its second arg, which contains a mapping of variables to values.
     expected_html = render_to_string('home.html', {'new_item_text': 'A new list item'})
     assert response.content.decode() == expected_html
+
+# Model tests
+def test_saving_retrieving_items():
+    first_item = Item()
+    first_item.text = 'The first (ever) list item'
+    first_item.save()
+
+    second_item = Item()
+    second_item.text = 'Item the second'
+    second_item.save()
+
+    saved_items = Item.objects.all()
+    assert saved_items.count() == 2
+
+    first_saved = saved_items[0]
+    second_saved = saved_items[1]
+    assert first_saved.text == 'The first (ever) list item'
+    assert second_saved.text == 'Item the second'
