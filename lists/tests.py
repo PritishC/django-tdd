@@ -41,3 +41,7 @@ def test_home_page_saves_POST_request():
 
     response = home_page(request)
     assert 'A new list item' in response.content.decode()
+
+    # render_to_string takes a dict as its second arg, which contains a mapping of variables to values.
+    expected_html = render_to_string('home.html', {'new_item_text': 'A new list item'})
+    assert response.content.decode() == expected_html
