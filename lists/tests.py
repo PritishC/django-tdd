@@ -19,7 +19,8 @@ def test_root_url_resolving_to_home_page():
     
     # Test that resolve when called with '/' finds a function called home_page.
     assert found.func == home_page
-    
+
+@pytest.mark.django_db
 def test_home_page_return_correct_html():
     """
     This test creates a HttpRequest object, and obtains the HttpResponse when

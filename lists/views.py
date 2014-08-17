@@ -7,6 +7,6 @@ def home_page(httprequest):
     item = Item()
     item.text = httprequest.POST.get('item_text', '')
     item.save()
-    
+
     return render(httprequest, 'home.html',
         {'new_item_text': httprequest.POST.get('item_text', ''),})
