@@ -33,3 +33,11 @@ def test_home_page_return_correct_html():
     #assert response.content.strip().endswith(b'</html>')
     expected_html = render_to_string('home.html')
     assert response.content.decode() == expected_html
+
+def test_home_page_saves_POST_request():
+    request = HttpRequest()
+    request.method = 'POST'
+    request.POST['item_text'] = 'A new list item'
+
+    response = home_page(request)
+    assert 'A new list item' in response.content.decode()
