@@ -62,10 +62,19 @@ def test_start_list_retrieve_later(browser):
     inputbox.send_keys('Buy peacock feathers')
     
     inputbox.send_keys(Keys.ENTER)
+    check_for_row_in_list_table(browser, '1: Buy peacock feathers')
+
     import time
     #time.sleep(10) # shows us that the CSRF mechanism is not enabled
-    
+
+    inputbox = browser.find_element_by_id('id_new_item')
+    inputbox.send_keys('Use peacock feathers to be a faggit')
+    inputbox.send_keys(Keys.ENTER)
+
+    check_for_row_in_list_table(browser, '1: Buy peacock feathers')
+    check_for_row_in_list_table(browser, '2: Use peacock feathers to be a faggit')
+
+def check_for_row_in_list_table(browser, row_text):
     table = browser.find_element_by_id('id_list_table')
     rows = table.find_elements_by_tag_name('tr')
-    
-    assert '1: Buy peacock feathers' in [row.text for row in rows]
+    assert row_text in [row.text for row in rows]
