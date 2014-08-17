@@ -53,6 +53,12 @@ def test_home_page_saves_POST_request():
     expected_html = render_to_string('home.html', {'new_item_text': 'A new list item'})
     assert response.content.decode() == expected_html
 
+@pytest.mark.django_db
+def home_page_saves_only_when_necessary():
+    request = HttpRequest()
+    home_page(request)
+    assert Item.objects.count() == 0
+
 # Model tests
 @pytest.mark.django_db
 def test_saving_retrieving_items():

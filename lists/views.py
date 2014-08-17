@@ -9,4 +9,4 @@ def home_page(httprequest):
     item.save()
 
     return render(httprequest, 'home.html',
-        {'new_item_text': httprequest.POST.get('item_text', ''),})
+        {'new_item_text': item.text,})
