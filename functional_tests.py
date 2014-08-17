@@ -68,4 +68,4 @@ def test_start_list_retrieve_later(browser):
     table = browser.find_element_by_id('id_list_table')
     rows = table.find_elements_by_tag_name('tr')
     
-    assert any(row.text == '1: Buy peacock feathers' for row in rows)
+    assert '1: Buy peacock feathers' in [row.text for row in rows]
