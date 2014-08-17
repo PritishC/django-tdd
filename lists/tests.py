@@ -35,14 +35,19 @@ def test_home_page_return_correct_html():
     expected_html = render_to_string('home.html')
     assert response.content.decode() == expected_html
 
+@pytest.mark.django_db
 def test_home_page_saves_POST_request():
     request = HttpRequest()
     request.method = 'POST'
     request.POST['item_text'] = 'A new list item'
 
     response = home_page(request)
-    assert 'A new list item' in response.content.decode()
 
+    assert Item.objects.count() == 1
+    new_item = Item.objects.first()
+    assert new_item.text == 'A new list item'
+
+    assert 'A new list item' in response.content.decode()
     # render_to_string takes a dict as its second arg, which contains a mapping of variables to values.
     expected_html = render_to_string('home.html', {'new_item_text': 'A new list item'})
     assert response.content.decode() == expected_html
