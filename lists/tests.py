@@ -48,6 +48,7 @@ def test_home_page_saves_POST_request():
     assert response.content.decode() == expected_html
 
 # Model tests
+@pytest.mark.django_db
 def test_saving_retrieving_items():
     first_item = Item()
     first_item.text = 'The first (ever) list item'
